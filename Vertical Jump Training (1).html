@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vertical Jump Training</title>
+<style>
+:root{--rb:#1f4fd8;--dp:#17369f;--lt:#e6eeff;--ice:#f4f8ff;--bd:#cfdaf0;--tx:#13254f;--mu:#5a6b91;--rd:#b3261e;--rdb:#fdecea;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body.wk{padding-bottom:96px}
+h1,h2,h3{margin:0 0 .4em;line-height:1.2}h1{font-size:1.6rem;letter-spacing:.02em}h2{font-size:1.2rem}h3{font-size:1rem}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--dp);color:#fff;display:flex;align-items:center;gap:14px;padding:10px 16px;overflow-x:auto}
+.brand{font-weight:800;white-space:nowrap}.brand b{color:#9dbcff}
+nav{display:flex;gap:4px}nav a{color:#dbe7ff;text-decoration:none;padding:7px 12px;border-radius:999px;white-space:nowrap;font-weight:600;font-size:.9rem}
+nav a.on{background:#fff;color:var(--dp)}
+main{max-width:1020px;margin:0 auto;padding:20px 16px 40px}
+.card{background:#fff;border:1px solid var(--bd);border-radius:18px;padding:16px;box-shadow:0 2px 10px rgba(31,79,216,.08);margin-bottom:14px}
+.card.lt{background:var(--lt);border-color:#bfd0f6}
+.grid{display:grid;gap:12px}.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.cal{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+.hero{display:flex;gap:24px;align-items:center;flex-wrap:wrap;background:linear-gradient(135deg,var(--rb),var(--dp));color:#fff;border-radius:22px;padding:22px}
+.hero .mu{color:#cfe0ff}
+.stat{background:var(--ice);border:1px solid var(--bd);border-radius:14px;padding:12px}.stat b{display:block;font-size:1.5rem;color:var(--dp)}
+.mu{color:var(--mu);font-size:.88rem}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.75rem;font-weight:700;margin:2px 4px 2px 0}
+.s-d{background:var(--rb);color:#fff}.s-p{background:#b4ccff;color:var(--dp)}.s-r{background:var(--lt);color:var(--mu)}.s-m{background:var(--rdb);color:var(--rd)}.s-t{background:var(--dp);color:#fff}.s-u{background:#fff;color:var(--mu);border:1px solid var(--bd)}
+.btn{background:var(--rb);color:#fff;border:0;border-radius:12px;padding:10px 16px;font-weight:700;cursor:pointer;font-size:.95rem;text-decoration:none;display:inline-block}
+.btn:hover{background:var(--dp)}.btn.o{background:#fff;color:var(--rb);border:1.5px solid var(--rb)}.btn.o:hover{background:var(--lt)}
+a.day{display:block;color:inherit;text-decoration:none;border-left:5px solid var(--rb);transition:transform .15s}a.day:hover{transform:translateY(-2px)}a.day.rest{border-left-color:#b8c6e6;background:var(--ice)}a.day.today{outline:2px solid var(--rb)}
+.bar{height:8px;background:var(--lt);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--rb);border-radius:9px;transition:width .3s}
+.sec{margin:22px 0 8px;color:var(--dp)}
+.ex{border:1px solid var(--bd);border-radius:14px;padding:12px;margin-bottom:10px;background:#fff}
+.exh{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.exh .bar{width:90px;margin-top:8px}
+.cue{margin:6px 0 8px;color:var(--tx)}
+.sets{display:flex;gap:8px;flex-wrap:wrap}
+.set{border:1.5px solid var(--bd);background:#fff;border-radius:12px;padding:9px 12px;font-weight:600;color:var(--tx);cursor:pointer;display:flex;gap:8px;align-items:center;font-size:.9rem}
+.set i{width:20px;height:20px;border:2px solid var(--rb);border-radius:6px;display:inline-grid;place-items:center;color:#fff;font-style:normal;font-size:.8rem}
+.set.on{background:var(--rb);border-color:var(--rb);color:#fff}.set.on i{background:#fff;color:var(--rb)}
+.lk{background:none;border:0;color:var(--rb);font-weight:700;cursor:pointer;padding:8px 0 0}
+.rt{display:flex;gap:6px;flex-wrap:wrap}.rb{border:1.5px solid var(--bd);background:#fff;border-radius:10px;min-width:42px;padding:7px 12px;font-weight:700;cursor:pointer;color:var(--tx)}.rb.on{background:var(--rb);border-color:var(--rb);color:#fff}
+.row{display:grid;grid-template-columns:minmax(150px,200px) 1fr;gap:8px;align-items:center;margin:8px 0}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+.warn{background:var(--rdb);border:1.5px solid var(--rd);color:#7a1610;border-radius:14px;padding:12px;margin:10px 0;font-weight:600}
+.okb{background:var(--ice);border:1px solid var(--bd);border-radius:14px;padding:10px;margin:10px 0}
+textarea,input[type=date]{width:100%;border:1.5px solid var(--bd);border-radius:12px;padding:10px;font:inherit;color:var(--tx);background:#fff}
+textarea{min-height:90px}
+textarea:focus,input:focus,button:focus-visible,a:focus-visible{outline:3px solid #9dbcff;outline-offset:1px}
+.ch{width:100%;height:auto}
+#tbar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:2px solid var(--rb);box-shadow:0 -6px 20px rgba(31,79,216,.15);padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));display:none;z-index:6}
+body.wk #tbar{display:block}
+#tbar .in{max-width:1020px;margin:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center}
+#tm{font-size:1.9rem;font-weight:800;color:var(--dp);min-width:90px;text-align:center;font-variant-numeric:tabular-nums}
+#tbar.fin{animation:fl .6s 6;background:var(--lt)}@keyframes fl{50%{background:#9dbcff}}
+.pre{padding:6px 11px;font-size:.85rem}
+.tag{font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:6px;margin-right:6px}.t-g{background:var(--lt);color:var(--dp)}.t-r{background:var(--dp);color:#fff}.t-p{background:#b4ccff;color:var(--dp)}
+details.card summary{cursor:pointer;font-weight:700;color:var(--dp)}
+.pair{display:flex;justify-content:space-between;margin-top:14px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<header class="top"><div class="brand">🏀 VERTICAL JUMP <b>TRAINING</b></div><nav id="nav"></nav></header>
+<main id="app"></main>
+<div id="tbar"><div class="in"><span id="tm">1:30</span><button class="btn" id="tgo" data-a="tgo">Start</button><button class="btn o" data-a="trs">Reset</button>
+<span><button class="btn o pre" data-a="tset" data-v="30">30s</button> <button class="btn o pre" data-a="tset" data-v="60">60s</button> <button class="btn o pre" data-a="tset" data-v="90">90s</button> <button class="btn o pre" data-a="tset" data-v="120">120s</button></span></div></div>
+<script>
+(function(){
+const $=s=>document.querySelector(s),esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const iso=d=>new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+let S={};try{S=JSON.parse(localStorage.getItem('vjt1'))||{}}catch(e){}
+S=Object.assign({start:iso(new Date()),sets:{},done:{},ready:{},refl:{},sound:true,plan:null},S);
+const save=()=>{try{localStorage.setItem('vjt1',JSON.stringify(S))}catch(e){}};
+const C={gl:['General lower-body strength','#c9dbff','#102a80'],up:['Upper-body strength','#dbe7ff','#102a80'],mo:['Mobility and recovery','#eaf1ff','#102a80'],el:['Elastic / reactive strength','#b4ccff','#102a80'],pl:['Plyometric training','#9dbcff','#0d2266'],ec:['Eccentric strength','#7ea3f5','#0d2266'],is:['Isometric strength','#3f6be3','#fff'],co:['Concentric strength','#2f5fe6','#fff'],ld:['Landing mechanics','#1f4fd8','#fff'],ap:['Approach-jump technique','#17369f','#fff']};
+const chip=k=>{const c=C[k]||C.mo;return `<span class="chip" style="background:${c[1]};color:${c[2]}">${c[0]}</span>`};
+const E={
+jog:['Easy jog or skips',2,'30 sec',30,'mo','Relaxed pace. Raise your heart rate gradually.'],
+swing:['Leg swings',2,'10 per leg',30,'mo','Hold a wall. Swing front to back, smooth and controlled.'],
+bridge:['Glute bridge',3,'12',45,'gl','Ribs down, squeeze glutes at the top, no back arching.'],
+pogo:['Pogo hops',3,'10',60,'el','Stiff ankles, quick ground contact, stay tall.'],
+hop:['Low line hops',3,'6',60,'el','Small side-to-side hops. Quiet, springy landings.'],
+cmj:['Countermovement jump',3,'5',90,'pl','Dip quickly, jump with full effort, land softly and reset.'],
+sqj:['Squat jump',3,'5',90,'co','Pause in a half squat, then jump up without a dip.'],
+land:['Landing practice',3,'5',60,'ld','Land on both feet, knees tracking over toes, hold 2 seconds.'],
+appr:['Approach jump',4,'3',90,'ap','Build speed over 2 to 3 steps, plant, then jump up with both arms.'],
+gob:['Goblet squat',3,'8',90,'gl','Chest up, sit between your hips, drive through the whole foot.'],
+tempo:['Tempo squat (3 sec down)',3,'6',90,'ec','Lower for 3 seconds, no bouncing, stand up strongly.'],
+iso:['Isometric squat hold',3,'20 sec',60,'is','Hold a half squat. Weight even on both feet.'],
+rdl:['Romanian deadlift (light)',3,'8',90,'gl','Hinge at the hips, flat back, feel your hamstrings.'],
+split:['Split squat',3,'8 per leg',90,'gl','Front knee steady, torso tall, drop straight down.'],
+stepup:['Step-ups',3,'8 per leg',75,'co','Drive through the front heel, control the way down.'],
+calf:['Slow calf raises',3,'12',60,'ec','Up in 1 second, down in 3 seconds, full range.'],
+push:['Push-ups',3,'10',60,'up','Body in one line. Stop a rep or two before form breaks.'],
+row:['Dumbbell row',3,'10 per arm',60,'up','Flat back, pull the elbow to your hip, no twisting.'],
+plank:['Plank',3,'30 sec',45,'gl','Glutes tight, ribs down, breathe steadily.'],
+stq:['Quad and hip-flexor stretch',2,'30 sec',15,'mo','Gentle stretch only. Never push into pain.'],
+sth:['Hamstring and calf stretch',2,'30 sec',15,'mo','Breathe slowly and relax into the stretch.'],
+brth:['Easy walk and deep breathing',1,'3 min',0,'mo','Bring your heart rate down gradually.']};
+const ex=a=>Array.isArray(a)?{n:a[0],s:a[1],r:a[2],rest:a[3],c:a[4],cue:a[5]}:{n:a.n,s:+a.s||1,r:String(a.r||''),rest:+a.rest||0,c:a.c||'mo',cue:a.cue||''};
+const SK=[['warm','Warm-up'],['jump','Jump practice'],['str','Strength exercises'],['acc','Accessory work'],['cool','Cool-down']];
+const sp=s=>s?s.split(','):[];
+const R=['Rest day','mo',0,null];
+const D=[
+['Foundation strength and landing','gl',50,'jog,swing,bridge','land','gob,iso,rdl','push,plank','stq,sth'],
+['Elastic and low-volume plyometrics','el',45,'jog,swing','pogo,hop,land','stepup,calf','row,plank','stq,sth'],R,
+['Eccentric and isometric strength','ec',55,'jog,swing,bridge','cmj','tempo,iso,split,calf','push,bridge','stq,sth'],
+['Mobility and recovery','mo',25,'jog,swing,bridge','','','','stq,sth,brth'],
+['Approach-jump technique','ap',45,'jog,swing','land,appr,cmj','gob','plank','stq,sth'],R,
+['Strength: lower body','gl',55,'jog,swing,bridge','land','gob,tempo,rdl','row,push','stq,sth'],
+['Reactive strength','el',45,'jog,swing','pogo,hop,sqj,land','calf,stepup','plank','stq,sth'],R,
+['Concentric power','co',50,'jog,swing,bridge','sqj,cmj','split,stepup,iso','bridge,row','stq,sth'],
+['Mobility and recovery','mo',25,'jog,swing,bridge','','','','stq,sth,brth'],
+['Approach and landing check','ap',45,'jog,swing','land,appr','iso','push','stq,sth'],R];
+const DEF=D.map(d=>d[3]===null?{t:d[0],cat:'mo',min:0,rest:1,sec:{warm:[],jump:[],str:[],acc:[],cool:[]}}:{t:d[0],cat:d[1],min:d[2],sec:{warm:sp(d[3]).map(k=>ex(E[k])),jump:sp(d[4]).map(k=>ex(E[k])),str:sp(d[5]).map(k=>ex(E[k])),acc:sp(d[6]).map(k=>ex(E[k])),cool:sp(d[7]).map(k=>ex(E[k]))}});
+const norm=p=>p.days.map(d=>({t:d.t||'Workout',cat:d.cat||'mo',min:+d.min||0,rest:!!d.rest,date:d.date,sec:Object.fromEntries(SK.map(([k])=>[k,((d.sec&&d.sec[k])||[]).map(ex)]))}));
+let PLAN=DEF;try{if(S.plan)PLAN=norm(S.plan)}catch(e){PLAN=DEF}
+const N=()=>PLAN.length,isRest=i=>!!PLAN[i].rest;
+const exs=i=>{const o=[];SK.forEach(([k])=>PLAN[i].sec[k].forEach((x,j)=>o.push({k,j,x})));return o};
+const key=(i,k,j,s)=>`${i}.${k}.${j}.${s}`;
+const tot=i=>exs(i).reduce((a,e)=>a+e.x.s,0);
+const exN=(i,e)=>{let n=0;for(let s=0;s<e.x.s;s++)if(S.sets[key(i,e.k,e.j,s)])n++;return n};
+const dn=i=>exs(i).reduce((a,e)=>a+exN(i,e),0);
+const pct=i=>tot(i)?Math.round(dn(i)/tot(i)*100):0;
+const done=i=>!isRest(i)&&!!(S.done[i]||(tot(i)>0&&dn(i)==tot(i)));
+const sum=(a,f)=>a.reduce((x,i)=>x+f(i),0);
+const today=()=>{const d=new Date();d.setHours(0,0,0,0);return d};
+const dateOf=i=>{const d=PLAN[i].date?new Date(PLAN[i].date+'T00:00:00'):new Date(S.start+'T00:00:00');if(!PLAN[i].date)d.setDate(d.getDate()+i);return d};
+const fmt=d=>d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
+const cur=()=>{let c=0;for(let i=0;i<N();i++)if(dateOf(i)<=today())c=i;return c};
+const started=()=>dateOf(0)<=today();
+const status=i=>{if(isRest(i))return['Rest day','r'];if(done(i))return['Done','d'];if(dn(i)>0)return[pct(i)+'% done','p'];const d=dateOf(i),t=today();if(d<t)return['Missed','m'];if(+d==+t)return['Today','t'];return['Upcoming','u']};
+const streak=c=>{let s=0,i=c;if(!isRest(i)&&!done(i))i--;for(;i>=0;i--){if(isRest(i))continue;if(done(i))s++;else break}return s};
+const recov=()=>{let last=-1;Object.keys(S.ready).forEach(k=>{if(+k>last)last=+k});if(last<0)return['No check-in yet','Do a readiness check on your next workout.'];const r=S.ready[last];if(r.pain=='y')return['Protect','Pain reported. Reduce or skip intense jumping and talk to a parent or coach.'];const v=[r.sleep,r.energy,r.legs].filter(Boolean);if(v.length&&v.reduce((a,b)=>a+b,0)/v.length<3)return['Low','Readiness was low. Keep jumps light.'];return['Good','Latest check-in looks fine.']};
+const ring=(p,sz)=>{const r=54,c=2*Math.PI*r;return `<svg width="${sz}" height="${sz}" viewBox="0 0 130 130"><circle cx="65" cy="65" r="${r}" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="12"/><circle cx="65" cy="65" r="${r}" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-p/100)}" transform="rotate(-90 65 65)" style="transition:stroke-dashoffset .6s"/><text x="65" y="73" text-anchor="middle" font-size="26" font-weight="800" fill="#fff">${p}%</text></svg>`};
+const rate=(a,day,k,cur)=>`<div class="rt">${[1,2,3,4,5].map(v=>`<button class="rb${cur===v?' on':''}" data-a="${a}" data-day="${day}" data-k="${k}" data-v="${v}">${v}</button>`).join('')}</div>`;
+const opts=(a,day,k,cur,l)=>`<div class="rt">${l.map(([v,t])=>`<button class="rb${cur===v?' on':''}" data-a="${a}" data-day="${day}" data-k="${k}" data-v="${v}">${t}</button>`).join('')}</div>`;
+const YN=[['y','Yes'],['n','No']];
+const link=(h,t,c)=>`<a class="${c||'btn'}" href="#${h}">${t}</a>`;
+const draft=()=>S.plan?'':`<div class="okb"><b>Draft plan.</b> These workouts are placeholders. Add your real plan in <a href="#data">Backup and plan</a>.</div>`;
+
+function dash(){const c=cur(),n=N(),tr=[...Array(n).keys()].filter(i=>!isRest(i)),dd=tr.filter(done).length,aS=sum(tr,tot),aD=sum(tr,dn),p=aS?Math.round(aD/aS*100):0,xd=sum(tr,i=>exs(i).filter(e=>exN(i,e)==e.x.s).length),nx=tr.find(i=>i>c&&!done(i)),rc=recov(),t=PLAN[c];
+return `<div class="hero"><div>${ring(p,150)}</div><div style="flex:1;min-width:220px"><h1>VERTICAL JUMP TRAINING</h1><div class="mu">${started()?`Day ${c+1} of ${n} · Week ${Math.floor(c/7)+1}`:`Plan starts ${fmt(dateOf(0))}`} · ${p}% of the plan complete</div><p style="margin:12px 0 0">${isRest(c)?'Today is a rest day.':'Today: <b>'+esc(t.t)+'</b>'}</p><p style="margin:12px 0 0">${link('day-'+(c+1),isRest(c)?'View today':'Open today’s workout','btn o')}</p></div></div>
+<div style="height:14px"></div>${draft()}
+<div class="grid g4"><div class="stat"><b>${dd} / ${tr.length}</b>Workouts completed (${n}-day plan)</div><div class="stat"><b>${streak(c)}</b>Day training streak</div><div class="stat"><b>${xd}</b>Exercises completed</div><div class="stat"><b>${Math.floor(c/7)+1}</b>Current week</div></div>
+<div class="grid g2" style="margin-top:12px"><div class="card"><h3>Next scheduled workout</h3>${nx!=null?`<p><b>${esc(PLAN[nx].t)}</b><br><span class="mu">${fmt(dateOf(nx))} · about ${PLAN[nx].min} min (estimate)</span></p>${link('day-'+(nx+1),'View workout','btn o')}`:'<p class="mu">Nothing left to schedule. Nice work.</p>'}</div>
+<div class="card"><h3>Recovery status: ${rc[0]}</h3><p class="mu">${rc[1]}</p></div></div>`}
+
+function cal(){let o=`<h2>Two-week calendar</h2><p class="mu">Start date ${fmt(dateOf(0))}. Change it in Backup and plan. Rest days never count as missed.</p>${draft()}<div class="cal">`;
+for(let i=0;i<N();i++){const s=status(i),r=isRest(i);o+=`<a class="card day${r?' rest':''}${+dateOf(i)==+today()?' today':''}" href="#day-${i+1}"><div class="mu">Day ${i+1} · ${fmt(dateOf(i))}</div><h3 style="margin-top:4px">${esc(PLAN[i].t)}</h3>${r?'':chip(PLAN[i].cat)}<div class="mu">${r?'No training':'About '+PLAN[i].min+' min (estimate)'}</div><span class="chip s-${s[1]}">${s[0]}</span>${r?'':`<div class="bar" style="margin-top:6px"><i style="width:${pct(i)}%"></i></div>`}</a>`}
+return o+'</div>'}
+
+function ready(i){const r=S.ready[i]||{},bad=r.pain=='y'||[r.sleep,r.energy,r.legs].some(v=>v&&v<=2),ans=r.sleep&&r.energy&&r.legs&&r.pain&&r.hard;
+return `<div class="card lt"><h2>Readiness check</h2><div class="row"><b>Sleep</b>${rate('rd',i,'sleep',r.sleep)}</div><div class="row"><b>Energy</b>${rate('rd',i,'energy',r.energy)}</div><div class="row"><b>Leg freshness</b>${rate('rd',i,'legs',r.legs)}</div><div class="row"><b>Pain today?</b>${opts('rd',i,'pain',r.pain,YN)}</div><div class="row"><b>Hard practice or game in the last 24 hours?</b>${opts('rd',i,'hard',r.hard,YN)}</div>
+${bad?`<div class="warn">Readiness is low or pain was reported. Reduce or skip intense jumping today and check with a parent or coach.</div>`:r.hard=='y'?`<div class="okb">Hard session in the last 24 hours: keep jumps easy and stop if your legs feel heavy.</div>`:ans?`<div class="okb">Check-in saved. Train as planned and stop if anything hurts.</div>`:''}</div>`}
+
+function workout(i){const d=PLAN[i],pv=i>0?link('day-'+i,'Previous day','btn o'):'<span></span>',nx=i<N()-1?link('day-'+(i+2),'Next day','btn o'):'<span></span>',head=`<p class="mu">Day ${i+1} · ${fmt(dateOf(i))}</p><h2>${esc(d.t)}</h2>`;
+if(isRest(i))return head+`<div class="card lt"><h3>Rest day</h3><p>Recovery is part of training. There is nothing to tick off today, and it is not counted as missed.</p></div><div class="pair">${pv}${nx}</div>`;
+const rf=S.refl[i]||{};let o=head+chip(d.cat)+`<span class="mu">About ${d.min} min (estimate)</span>`+draft()+ready(i)+`<div class="card"><b>Workout progress: ${pct(i)}%</b> <span class="mu">(${dn(i)} of ${tot(i)} sets)</span><div class="bar" style="margin-top:6px"><i style="width:${pct(i)}%"></i></div></div>`;
+SK.forEach(([k,l])=>{const L=PLAN[i].sec[k];if(!L.length)return;o+=`<h3 class="sec">${l}</h3>`;L.forEach((x,j)=>{const n=exN(i,{k,j,x});o+=`<div class="ex"><div class="exh"><div><b>${esc(x.n)}</b><div>${chip(x.c)}</div><div class="mu">${x.s} × ${esc(x.r)}${x.rest?' · Rest '+x.rest+' sec':''}</div></div><div style="text-align:right"><span class="mu">${n}/${x.s} sets</span><div class="bar"><i style="width:${n/x.s*100}%"></i></div></div></div><p class="cue">${esc(x.cue)}</p><div class="sets">${[...Array(x.s).keys()].map(s=>{const on=S.sets[key(i,k,j,s)];return `<button class="set${on?' on':''}" role="checkbox" aria-checked="${!!on}" data-a="set" data-k="${key(i,k,j,s)}"><i>${on?'✓':''}</i>Set ${s+1} — ${/^\d+$/.test(x.r)?x.r+' reps':esc(x.r)}</button>`}).join('')}</div>${x.rest?`<button class="lk" data-a="tset" data-v="${x.rest}" data-go="1">⏱ Start ${x.rest} sec rest</button>`:''}</div>`})});
+o+=`<h3 class="sec">Session reflection</h3><div class="card"><div class="row"><b>How hard did it feel?</b>${rate('rf',i,'diff',rf.diff)}</div><div class="row"><b>Jump quality</b>${rate('rf',i,'jq',rf.jq)}</div><div class="row"><b>Leg freshness</b>${rate('rf',i,'leg',rf.leg)}</div><div class="row"><b>Soreness</b>${rate('rf',i,'sore',rf.sore)}</div><div class="row"><b>Any pain?</b>${opts('rf',i,'pain',rf.pain,YN)}</div><div class="row"><b>Basketball workload</b>${opts('rf',i,'load',rf.load,[['none','None'],['light','Light'],['mod','Moderate'],['hard','Hard']])}</div>
+<label class="mu">Pain or soreness notes</label><textarea data-i="${i}" data-k="painNote">${esc(rf.painNote)}</textarea><label class="mu">Personal notes</label><textarea data-i="${i}" data-k="note">${esc(rf.note)}</textarea><p class="mu">Everything saves automatically.</p><button class="btn${S.done[i]?' o':''}" data-a="fin" data-day="${i}">${S.done[i]?'Marked complete. Tap to undo':'Mark workout complete'}</button></div><div class="pair">${pv}${nx}</div>`;return o}
+
+function chart(series,max){const W=560,H=150,p=26,dx=(W-2*p)/Math.max(1,N()-1);let o=`<svg viewBox="0 0 ${W} ${H+34}" class="ch" role="img">`;
+for(let g=0;g<=max;g++){const y=H-g*H/max+8;o+=`<line x1="${p}" x2="${W-p}" y1="${y}" y2="${y}" stroke="#e1e9f7"/><text x="4" y="${y+4}" font-size="10" fill="#5a6b91">${g}</text>`}
+for(let i=0;i<N();i++)o+=`<text x="${p+i*dx}" y="${H+26}" font-size="10" text-anchor="middle" fill="#5a6b91">${i+1}</text>`;
+series.forEach(s=>{const pts=[];s.v.forEach((v,i)=>{if(v!=null)pts.push([p+i*dx,H-v*H/max+8])});o+=`<polyline fill="none" stroke="${s.c}" stroke-width="2.5" points="${pts.join(' ')}"/>`+pts.map(q=>`<circle cx="${q[0]}" cy="${q[1]}" r="4" fill="${s.c}"/>`).join('')});return o+'</svg>'}
+function bars(v){const W=560,H=120,p=10,w=(W-2*p)/v.length;let o=`<svg viewBox="0 0 ${W} ${H+24}" class="ch" role="img">`;v.forEach((x,i)=>{const h=x==null?0:x*H/100;o+=`<rect x="${p+i*w+3}" y="${H-h+4}" width="${w-6}" height="${Math.max(h,x==null?0:2)}" rx="4" fill="${x==null?'#e1e9f7':'#2250e0'}"/><text x="${p+i*w+w/2}" y="${H+18}" font-size="10" text-anchor="middle" fill="#5a6b91">${i+1}</text>`});return o+'</svg>'}
+function progress(){const n=N(),tr=[...Array(n).keys()].filter(i=>!isRest(i)),p=sum(tr,tot)?Math.round(sum(tr,dn)/sum(tr,tot)*100):0,wk=[];for(let w=0;w<Math.ceil(n/7);w++){const l=tr.filter(i=>Math.floor(i/7)==w);wk.push(l.length?Math.round(sum(l,i=>pct(i))/l.length):0)}
+const per=PLAN.map((_,i)=>isRest(i)?null:pct(i)),g=(o,k)=>PLAN.map((_,i)=>(S[o][i]||{})[k]||null);
+const exT=sum(tr,i=>exs(i).length),exD=sum(tr,i=>exs(i).filter(e=>exN(i,e)==e.x.s).length);
+let notes='';PLAN.forEach((_,i)=>{const r=S.refl[i],q=S.ready[i];if(!r&&!q)return;notes+=`<div class="card"><b>Day ${i+1}: ${esc(PLAN[i].t)}</b><div class="mu">${q?`Readiness sleep ${q.sleep||'-'}, energy ${q.energy||'-'}, legs ${q.legs||'-'}, pain ${q.pain=='y'?'yes':'no'}, hard session before ${q.hard=='y'?'yes':'no'}. `:''}${r?`Difficulty ${r.diff||'-'}, jump quality ${r.jq||'-'}, legs ${r.leg||'-'}, soreness ${r.sore||'-'}, pain ${r.pain=='y'?'yes':'no'}, basketball ${r.load||'-'}.`:''}</div>${r&&(r.painNote||r.note)?`<p>${esc(r.painNote)} ${esc(r.note)}</p>`:''}</div>`});
+return `<h2>Progress</h2><div class="grid g4"><div class="stat"><b>${p}%</b>Overall completion</div><div class="stat"><b>${tr.filter(done).length} / ${tr.length}</b>Workouts done</div><div class="stat"><b>${exD} / ${exT}</b>Exercises done</div>${wk.map((x,i)=>`<div class="stat"><b>${x}%</b>Week ${i+1} completion</div>`).join('')}</div>
+<div class="card" style="margin-top:12px"><h3>Workout completion by day (%)</h3>${bars(per)}</div>
+<div class="card"><h3>Jump quality and leg freshness after workouts (1–5)</h3>${chart([{c:'#1f4fd8',v:g('refl','jq')},{c:'#7ea3f5',v:g('refl','leg')}],5)}<span class="chip" style="background:#1f4fd8;color:#fff">Jump quality</span><span class="chip" style="background:#7ea3f5;color:#0d2266">Leg freshness</span></div>
+<div class="card"><h3>Readiness history (1–5)</h3>${chart([{c:'#17369f',v:g('ready','sleep')},{c:'#1f4fd8',v:g('ready','energy')},{c:'#9dbcff',v:g('ready','legs')}],5)}<span class="chip" style="background:#17369f;color:#fff">Sleep</span><span class="chip" style="background:#1f4fd8;color:#fff">Energy</span><span class="chip" style="background:#9dbcff;color:#0d2266">Legs</span></div>
+<h3 class="sec">Check-ins, workload and notes</h3>${notes||'<p class="mu">Complete a readiness check or reflection and it will appear here.</p>'}`}
+
+const L=[
+['Elastic strength','Storing and returning energy in muscles and tendons during quick loading.','A springy system gives more jump for the same effort.','Quick second jumps and rebounds.',['el'],'Stay stiff and tall, minimise ground time.','elastic energy jump tendon'],
+['Stretch-shortening cycle','A muscle lengthens, then shortens straight away, which boosts force.','It is the engine behind a countermovement jump.','Every dip before a jump.',['pl','el'],'Move smoothly from down to up with no pause.','stretch-shortening cycle jump'],
+['Fast vs slow SSC','Fast: under about 250 ms ground contact (pogo hops, sprinting). Slow: longer (countermovement and approach jumps).','Trains different qualities. Both matter.','Fast: rebounds and quick steps. Slow: standing and approach jumps.',['el','pl','ap'],'Pick the right speed for each drill.','fast slow stretch-shortening cycle'],
+['Plyometric training','Jumps and hops that use the stretch-shortening cycle.','Reviews often link it to better jump height.','Builds explosive take-offs.',['pl','el'],'Quality over quantity. Stop when form fades.','plyometric training vertical jump'],
+['Eccentric strength','Controlling force while a muscle lengthens, such as lowering into a squat.','Helps you load quickly and absorb landings.','Braking before a jump and landing.',['ec'],'Lower slowly under control.','eccentric training jump performance'],
+['Isometric strength','Producing force without moving, such as a squat hold.','Builds strength at set joint angles.','Strong positions for cutting and jumping.',['is'],'Keep even weight, breathe, no knee collapse.','isometric training jump'],
+['Concentric strength','Force while a muscle shortens, the pushing-up part.','Drives upward speed out of the dip.','Push-off in every jump.',['co'],'Push hard through the whole foot.','concentric strength jump'],
+['Tendon stiffness','How resistant tendons are to stretching.','Helps transfer force quickly.','Springy ankles and knees.',['el','ec','is'],'Build gradually. Tendons adapt slowly.','tendon stiffness jump performance'],
+['Reactive ability','Producing force quickly after a fast landing.','Shows how quickly you can rebound.','Rebounds and quick re-jumps.',['el','pl'],'Land, then go. Keep contacts short.','reactive strength index'],
+['Landing mechanics','Landing softly with good alignment.','Protects joints and prepares the next jump.','Many landings per game.',['ld'],'Soft knees, knees over toes, hips back.','landing mechanics basketball injury'],
+['Approach-jump mechanics','Turning running speed into vertical lift.','The last steps affect how much speed you can use.','Rebounds and layups on the move.',['ap'],'Build speed, plant firmly, swing both arms.','approach jump biomechanics'],
+['Maximal strength vs power','Strength is how much force you can make. Power is force times speed.','Strength builds the base. Power converts it to quick jumping.','Needed for strong, fast movement.',['gl','co'],'Build strength steadily, then practise fast intent.','maximal strength power jump']];
+function learn(){const nm=t=>[...new Set(PLAN.flatMap(d=>Object.values(d.sec).flat()).filter(x=>t[4].includes(x.c)).map(x=>x.n))];
+return `<h2>Learn</h2><div class="okb">Each topic has a <span class="tag t-g">General explanation</span>, a <span class="tag t-r">Research</span> link and <span class="tag t-p">From your plan</span> exercises. Research links open PubMed searches so you can read the studies yourself. No THP discussion is included because your plan file was not received.</div>`+L.map(t=>`<details class="card"><summary>${t[0]}</summary><p><span class="tag t-g">General explanation</span><b>What it means:</b> ${t[1]}</p><p><b>Why it matters for jumping:</b> ${t[2]}</p><p><b>Basketball:</b> ${t[3]}</p><p><b>Coaching points:</b> ${t[5]}</p><p><span class="tag t-p">From your plan</span>${nm(t).map(esc).join(', ')||'No matching exercises in the current plan.'}</p><p><span class="tag t-r">Research</span><a href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(t[6])}" target="_blank" rel="noopener">Search PubMed: ${esc(t[6])}</a></p></details>`).join('')}
+
+function data(){return `<h2>Backup and plan</h2><div class="card"><h3>Start date</h3><input type="date" id="sd" value="${S.start}"><p class="mu">Day 1 falls on this date. Dates in an imported plan override it.</p><label><input type="checkbox" data-a="snd" ${S.sound?'checked':''}> Play a sound when the rest timer ends</label></div>
+<div class="card"><h3>Backup</h3><p class="mu">Copy this text to save your progress. Paste a saved backup below and tap Restore.</p><textarea id="ex" readonly>${esc(JSON.stringify(S))}</textarea><button class="btn o" data-a="cp">Copy backup</button><textarea id="im" placeholder="Paste a backup here"></textarea><button class="btn" data-a="imp">Restore backup</button></div>
+<div class="card"><h3>Import your plan</h3><p class="mu">Paste plan JSON in this shape: {"days":[{"t":"Title","cat":"gl","min":45,"date":"2026-11-02","sec":{"warm":[],"jump":[],"str":[],"acc":[],"cool":[]}},{"t":"Rest day","rest":true}]}. Each exercise is {"n":"Goblet squat","s":3,"r":"8","rest":90,"c":"gl","cue":"..."}. Categories: gl up mo el pl ec is co ld ap.</p><textarea id="pl"></textarea><button class="btn" data-a="plan">Import plan</button> <button class="btn o" data-a="dplan">Use draft plan</button><p id="msg" class="mu"></p></div>
+<div class="card"><h3>Reset</h3><button class="btn o" data-a="rst">Erase all progress</button></div>`}
+
+let T={left:90,run:false,tot:90,end:0,iv:null};
+const tshow=()=>{const l=Math.max(0,Math.ceil(T.left));$('#tm').textContent=Math.floor(l/60)+':'+String(l%60).padStart(2,'0');$('#tgo').textContent=T.run?'Pause':(T.left<T.tot&&T.left>0?'Resume':'Start');$('#tbar').classList.toggle('fin',T.left<=0&&T.tot>0)};
+const beep=()=>{if(!S.sound)return;try{const a=new(window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=880;g.gain.value=.2;o.start();o.stop(a.currentTime+.6)}catch(e){}};
+const tset=(s,go)=>{clearInterval(T.iv);T={left:s,run:false,tot:s,end:0,iv:null};tshow();if(go)tgo()};
+const tgo=()=>{if(T.run){T.left=(T.end-Date.now())/1e3;T.run=false;clearInterval(T.iv);tshow();return}if(T.left<=0)T.left=T.tot;T.run=true;T.end=Date.now()+T.left*1e3;T.iv=setInterval(()=>{T.left=(T.end-Date.now())/1e3;if(T.left<=0){T.left=0;T.run=false;clearInterval(T.iv);beep()}tshow()},200);tshow()};
+
+function render(){const h=location.hash.slice(1)||'dash',m=h.match(/^day-(\d+)$/);let b;
+if(m){const i=+m[1]-1;b=PLAN[i]?workout(i):dash()}else b=({dash,cal,progress,learn,data}[h]||dash)();
+$('#app').innerHTML=b;document.body.classList.toggle('wk',!!m&&!!PLAN[+m[1]-1]&&!isRest(+m[1]-1));
+const N2=[['dash','Dashboard'],['cal','Calendar'],['day-'+(cur()+1),'Workout'],['progress','Progress'],['learn','Learn'],['data','Backup and plan']];
+$('#nav').innerHTML=N2.map(x=>`<a href="#${x[0]}" class="${(x[0]==h||(m&&x[0].startsWith('day')))?'on':''}">${x[1]}</a>`).join('');tshow()}
+
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,d=b.dataset,v=isNaN(+d.v)?d.v:+d.v;
+if(a=='set'){S.sets[d.k]=!S.sets[d.k];if(!S.sets[d.k])delete S.sets[d.k];save();render()}
+else if(a=='rd'||a=='rf'){const o=a=='rd'?'ready':'refl';S[o][d.day]=S[o][d.day]||{};S[o][d.day][d.k]=v;save();render()}
+else if(a=='fin'){S.done[d.day]=!S.done[d.day];if(!S.done[d.day])delete S.done[d.day];save();render()}
+else if(a=='tset')tset(+d.v,d.go);else if(a=='tgo')tgo();else if(a=='trs')tset(T.tot);
+else if(a=='snd'){S.sound=b.checked;save()}
+else if(a=='cp'){const t=$('#ex');t.select();try{navigator.clipboard.writeText(t.value)}catch(x){document.execCommand&&document.execCommand('copy')}$('#msg')||0;b.textContent='Copied'}
+else if(a=='imp'){try{const o=JSON.parse($('#im').value);S=Object.assign(S,o);save();PLAN=S.plan?norm(S.plan):DEF;render()}catch(x){$('#im').value='';$('#im').placeholder='That backup could not be read. Paste the full copied text.'}}
+else if(a=='plan'){try{const o=JSON.parse($('#pl').value);if(!o.days||!o.days.length)throw 0;norm(o);S.plan=o;PLAN=norm(o);save();$('#msg').textContent='Plan imported. Open the Calendar to check it.'}catch(x){$('#msg').textContent='That plan could not be read. Check the JSON shape above.'}}
+else if(a=='dplan'){S.plan=null;PLAN=DEF;save();$('#msg').textContent='Draft plan restored.'}
+else if(a=='rst'){if(b.dataset.c){S={start:iso(new Date()),sets:{},done:{},ready:{},refl:{},sound:true,plan:null};PLAN=DEF;save();render()}else{b.dataset.c=1;b.textContent='Tap again to erase everything'}}});
+const sv=e=>{const t=e.target;if(t.dataset.i!=null){S.refl[t.dataset.i]=S.refl[t.dataset.i]||{};S.refl[t.dataset.i][t.dataset.k]=t.value;save()}else if(t.id=='sd'&&t.value){S.start=t.value;save()}};
+document.addEventListener('input',sv);document.addEventListener('change',sv);
+window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0)});
+render();
+})();
+</script></body></html>
